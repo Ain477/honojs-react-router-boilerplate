@@ -1,9 +1,7 @@
+import { dbSchema, tableValidationSchema } from "@repo/db-schema";
 import { drizzle } from "drizzle-orm/postgres-js";
 import postgres from "postgres";
-import { dbSchema, tableValidationSchema } from "@repo/db-schema";
 import { env } from "@/config/env";
-
-
 
 /**
  * Get database instance.
@@ -21,8 +19,8 @@ export default function getDB() {
 		);
 	}
 
-    const queryClient = postgres(env.DIRECT_DATABASE_URL);
-    const db = drizzle(queryClient, { schema: dbSchema });
+	const queryClient = postgres(env.DIRECT_DATABASE_URL);
+	const db = drizzle(queryClient, { schema: dbSchema });
 
 	return db;
 }

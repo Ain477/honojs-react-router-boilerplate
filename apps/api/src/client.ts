@@ -13,6 +13,7 @@ export type TBackendClient = typeof clientInstance;
  * const client = backendClient('http://localhost:8787');
  * const response = await client.index.$get(); // Fully typed
  */
-const backendClient = (...args: Parameters<typeof hc>): TBackendClient => hc<RoutersType>(...args);
+const backendClient = (...args: Parameters<typeof hc>): TBackendClient =>
+	hc<RoutersType>(...args);
 
 export default backendClient;

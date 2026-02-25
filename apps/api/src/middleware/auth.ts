@@ -1,6 +1,6 @@
 import type { Context, Next } from "hono";
-import { getAuth, type TAuth } from "@/lib/auth";
 import { getUserId as getUserIdFromContext } from "@/context/user";
+import { getAuth, type TAuth } from "@/lib/auth";
 
 type SessionUser = TAuth["$Infer"]["Session"]["user"];
 type SessionData = TAuth["$Infer"]["Session"]["session"];

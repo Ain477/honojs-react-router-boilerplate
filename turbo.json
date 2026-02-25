@@ -6,7 +6,6 @@
 			"outputs": ["dist/**", "build/**", ".react-router/**"]
 		},
 		"dev": {
-			"dependsOn": ["^build"],
 			"cache": false,
 			"persistent": true
 		},
@@ -21,7 +20,7 @@
 			"cache": false
 		},
 		"check-types": {
-			"dependsOn": ["^build"]
+			"cache": false
 		}
 	}
 }

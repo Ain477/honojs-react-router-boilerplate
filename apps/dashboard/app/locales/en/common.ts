@@ -1,0 +1,6 @@
+export default {
+	welcome: "Welcome",
+	what_is_next: "What's next?",
+	react_router_docs: "React Router Docs",
+	join_discord: "Join Discord",
+} as const;

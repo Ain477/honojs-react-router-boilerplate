@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-	"jsx": "react",
+    "jsx": "react",
     "target": "ESNext",
     "module": "ESNext",
     "moduleResolution": "Bundler",

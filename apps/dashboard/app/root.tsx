@@ -1,3 +1,4 @@
+import { useTranslation } from "react-i18next";
 import {
 	isRouteErrorResponse,
 	Links,
@@ -8,6 +9,7 @@ import {
 } from "react-router";
 
 import type { Route } from "./+types/root";
+import { ThemeProvider } from "./components/providers";
 import "./app.css";
 
 export const links: Route.LinksFunction = () => [
@@ -24,8 +26,13 @@ export const links: Route.LinksFunction = () => [
 ];
 
 export function Layout({ children }: { children: React.ReactNode }) {
+	const { i18n } = useTranslation();
+
+	const locale = i18n.language ?? "en";
+	const dir = typeof i18n.dir === "function" ? i18n.dir() : "ltr";
+
 	return (
-		<html lang="en">
+		<html lang={locale} dir={dir} suppressHydrationWarning>
 			<head>
 				<meta charSet="utf-8" />
 				<meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -33,7 +40,14 @@ export function Layout({ children }: { children: React.ReactNode }) {
 				<Links />
 			</head>
 			<body>
-				{children}
+				<ThemeProvider
+					attribute="class"
+					defaultTheme="system"
+					enableSystem
+					disableTransitionOnChange
+				>
+					{children}
+				</ThemeProvider>
 				<ScrollRestoration />
 				<Scripts />
 			</body>

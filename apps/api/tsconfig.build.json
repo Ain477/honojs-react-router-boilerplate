@@ -6,10 +6,5 @@
 		"declarationMap": true,
 		"strictNullChecks": true
 	},
-	"include": [
-		"app.d.ts",
-		"src/trpc.ts",
-		"src/export.ts",
-		"src/index.ts"
-	]
+	"include": ["app.d.ts", "src/trpc.ts", "src/export.ts", "src/index.ts"]
 }
