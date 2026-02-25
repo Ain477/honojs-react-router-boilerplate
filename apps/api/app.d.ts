@@ -1,7 +1,4 @@
-import { Hono } from "hono";
-import { contextStorage } from "hono/context-storage";
 import type { TAuth } from "@/lib/auth";
-
 
 declare global {
     type TApp = {
