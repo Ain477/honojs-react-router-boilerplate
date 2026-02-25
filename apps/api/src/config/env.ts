@@ -28,6 +28,8 @@ export const env = createEnv({
 		DIRECT_DATABASE_URL: z.string().url(),
 		REDIS_URL: z.string().url(),
 		WEAVIATE_URL: z.string().url(),
+		BETTER_AUTH_SECRET: z.string().min(1),
+		BETTER_AUTH_URL: z.string().url(),
 	},
 
 	/**
@@ -48,6 +50,8 @@ export const env = createEnv({
 		DIRECT_DATABASE_URL: process.env.DIRECT_DATABASE_URL,
 		REDIS_URL: process.env.REDIS_URL,
 		WEAVIATE_URL: process.env.WEAVIATE_URL,
+		BETTER_AUTH_SECRET: process.env.BETTER_AUTH_SECRET,
+		BETTER_AUTH_URL: process.env.BETTER_AUTH_URL,
 	},
 
 	/**

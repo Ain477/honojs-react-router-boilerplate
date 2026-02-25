@@ -4,7 +4,7 @@ import { parse } from "dotenv";
 const apiDir = join(import.meta.dir, "..");
 const envPath = join(apiDir, ".env");
 const envTemplatePath = join(apiDir, ".env.template");
-const envTsPath = join(apiDir, "src", "env.ts");
+const envTsPath = join(apiDir, "src", "config", "env.ts");
 
 async function syncEnv() {
 	console.log("🔄 Syncing .env with .env.template...");

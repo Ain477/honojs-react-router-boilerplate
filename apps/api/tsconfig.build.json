@@ -1,0 +1,15 @@
+{
+	"extends": "./tsconfig.json",
+	"compilerOptions": {
+		"outDir": "./dist",
+		"declaration": true,
+		"declarationMap": true,
+		"strictNullChecks": true
+	},
+	"include": [
+		"app.d.ts",
+		"src/trpc.ts",
+		"src/export.ts",
+		"src/index.ts"
+	]
+}
