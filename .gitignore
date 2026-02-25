@@ -5,16 +5,20 @@ node_modules/
 dist/
 build/
 .react-router/
+*.tsbuildinfo
 
 # Turbo
 .turbo/
 
 # Environment
 .env
-.env.local
-.env.*.local
+.env.*
+!.env.example
+!.env.template
+.dev.vars*
+!.dev.vars.example
 
-# IDE
+# IDE / Editor
 .vscode/
 .idea/
 *.swp
@@ -25,7 +29,7 @@ build/
 .DS_Store
 Thumbs.db
 
-# Debug
+# Debug & Logs
 npm-debug.log*
 pnpm-debug.log*
 yarn-debug.log*
@@ -33,3 +37,15 @@ yarn-error.log*
 
 # Coverage
 coverage/
+
+# Cloudflare Workers
+.mf
+.wrangler
+worker-configuration.d.ts
+
+# Docker & Local Data Services (Postgres, Redis, Weaviate)
+data/
+docker-data/
+pg-data/
+redis-data/
+weaviate-data/
