@@ -36,8 +36,7 @@ export default function getAuth() {
 		trustedOrigins: [
 			"http://app.localhost:1355",
 			"https://aihub.com.bd",
-			"https://*.aihub.com.bd",
-			"https://ai-hub-v5-dashboard.pages.dev",
+			"https://*.aihub.com.bd"
 		],
 		emailAndPassword: {
 			enabled: true,

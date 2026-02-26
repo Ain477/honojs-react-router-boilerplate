@@ -7,9 +7,14 @@ import {
 	Scripts,
 	ScrollRestoration,
 } from "react-router";
+import { Toaster } from "sonner";
+import { NavigationProgress } from "@/components/navigation-progress";
+
+import { GeneralError } from "@/features/errors/general-error";
+import { NotFoundError } from "@/features/errors/not-found-error";
 
 import type { Route } from "./+types/root";
-import { ThemeProvider } from "./components/providers";
+import Providers from "./components/providers";
 import "./app.css";
 
 export const links: Route.LinksFunction = () => [
@@ -21,7 +26,7 @@ export const links: Route.LinksFunction = () => [
 	},
 	{
 		rel: "stylesheet",
-		href: "https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap",
+		href: "https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Manrope:wght@200..800&display=swap",
 	},
 ];
 
@@ -36,18 +41,16 @@ export function Layout({ children }: { children: React.ReactNode }) {
 			<head>
 				<meta charSet="utf-8" />
 				<meta name="viewport" content="width=device-width, initial-scale=1" />
+				<meta name="theme-color" content="#fff" />
 				<Meta />
 				<Links />
 			</head>
 			<body>
-				<ThemeProvider
-					attribute="class"
-					defaultTheme="system"
-					enableSystem
-					disableTransitionOnChange
-				>
+				<Providers>
+					<NavigationProgress />
 					{children}
-				</ThemeProvider>
+					<Toaster richColors closeButton />
+				</Providers>
 				<ScrollRestoration />
 				<Scripts />
 			</body>
@@ -60,30 +63,11 @@ export default function App() {
 }
 
 export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
-	let message = "Oops!";
-	let details = "An unexpected error occurred.";
-	let stack: string | undefined;
-
 	if (isRouteErrorResponse(error)) {
-		message = error.status === 404 ? "404" : "Error";
-		details =
-			error.status === 404
-				? "The requested page could not be found."
-				: error.statusText || details;
-	} else if (import.meta.env.DEV && error && error instanceof Error) {
-		details = error.message;
-		stack = error.stack;
+		if (error.status === 404) {
+			return <NotFoundError />;
+		}
 	}
 
-	return (
-		<main className="pt-16 p-4 container mx-auto">
-			<h1>{message}</h1>
-			<p>{details}</p>
-			{stack && (
-				<pre className="w-full p-4 overflow-x-auto">
-					<code>{stack}</code>
-				</pre>
-			)}
-		</main>
-	);
+	return <GeneralError />;
 }

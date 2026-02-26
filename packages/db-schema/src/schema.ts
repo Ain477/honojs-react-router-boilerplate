@@ -9,8 +9,6 @@ import {
 	uniqueIndex,
 	uuid,
 } from "drizzle-orm/pg-core";
-import { createInsertSchema, createSelectSchema } from "drizzle-zod";
-import type { z } from "zod";
 import { createSchema } from "./createTypes";
 
 const commonCols = {
@@ -287,7 +285,6 @@ export const invitationRelations = relations(invitation, ({ one }) => ({
 	}),
 }));
 
-
 export const tableValidationSchema = {
 	user: createSchema(user),
 	session: createSchema(session),
@@ -299,7 +296,7 @@ export const tableValidationSchema = {
 	member: createSchema(member),
 	invitation: createSchema(invitation),
 	apikey: createSchema(apikey),
-	jwks: createSchema(jwks)
+	jwks: createSchema(jwks),
 };
 
 export const dbSchema = {
@@ -313,5 +310,14 @@ export const dbSchema = {
 	member,
 	invitation,
 	apikey,
-	jwks
+	jwks,
+	userRelations,
+	sessionRelations,
+	accountRelations,
+	apikeyRelations,
+	passkeyRelations,
+	twoFactorRelations,
+	organizationRelations,
+	memberRelations,
+	invitationRelations,
 };

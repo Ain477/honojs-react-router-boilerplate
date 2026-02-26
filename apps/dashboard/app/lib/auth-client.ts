@@ -34,5 +34,8 @@ export const authClient = createAuthClient({
 	],
 	advanced: {
 		cookiePrefix: "aihub",
+		headers: {
+			credentials: "include",
+		},
 	},
 });

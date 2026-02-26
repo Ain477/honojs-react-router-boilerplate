@@ -13,7 +13,6 @@ const app = new Hono()
 	.use(contextStorage())
 	.use("*", requestId())
 	.use(secureHeaders())
-	.use(betterAuthMiddleware)
 	.use(
 		"*",
 		cors({
@@ -37,6 +36,7 @@ const app = new Hono()
 		}),
 	)
 	.on(["POST", "GET"], "/auth/*", (c) => auth.handler(c.req.raw))
+	.use(betterAuthMiddleware)
 	.onError((err, c) => {
 		if (err instanceof HTTPException) {
 			return c.json(
