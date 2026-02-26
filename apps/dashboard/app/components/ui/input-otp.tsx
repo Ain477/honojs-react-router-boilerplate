@@ -1,5 +1,3 @@
-"use client";
-
 import { OTPInput, OTPInputContext } from "input-otp";
 import { MinusIcon } from "lucide-react";
 import * as React from "react";
@@ -66,12 +64,16 @@ function InputOTPSlot({
 	);
 }
 
-function InputOTPSeparator({ ...props }: React.ComponentProps<"div">) {
+function InputOTPSeparator({
+	className,
+	...props
+}: React.ComponentProps<"div">) {
 	return (
-		// biome-ignore lint/a11y/useFocusableInteractive: We need this to be a div for the input otp separator to work
-		// biome-ignore lint/a11y/useSemanticElements: We need this to be a div for the input otp separator to work
-		// biome-ignore lint/a11y/useAriaPropsForRole: We need this to be a div for the input otp separator to work
-		<div data-slot="input-otp-separator" role="separator" {...props}>
+		<div
+			data-slot="input-otp-separator"
+			className={cn("flex items-center justify-center", className)}
+			{...props}
+		>
 			<MinusIcon />
 		</div>
 	);

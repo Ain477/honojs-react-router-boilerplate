@@ -1,5 +1,3 @@
-"use client";
-
 import { cva, type VariantProps } from "class-variance-authority";
 import type * as React from "react";
 import { Button } from "@/components/ui/button";
@@ -7,12 +5,10 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { cn } from "@/utils/cn";
 
-function InputGroup({ className, ...props }: React.ComponentProps<"div">) {
+function InputGroup({ className, ...props }: React.ComponentProps<"fieldset">) {
 	return (
-		// biome-ignore lint/a11y/useSemanticElements: We need this to be a div for the input group to work
-		<div
+		<fieldset
 			data-slot="input-group"
-			role="group"
 			className={cn(
 				"group/input-group border-input dark:bg-input/30 relative flex w-full items-center rounded-md border shadow-xs transition-[color,box-shadow] outline-none",
 				"h-9 min-w-0 has-[>textarea]:h-auto",
@@ -61,20 +57,26 @@ function InputGroupAddon({
 	className,
 	align = "inline-start",
 	...props
-}: React.ComponentProps<"div"> & VariantProps<typeof inputGroupAddonVariants>) {
+}: React.ComponentProps<"fieldset"> &
+	VariantProps<typeof inputGroupAddonVariants>) {
+	const handleFocusInput = (target: HTMLElement) => {
+		if (target.closest("button")) {
+			return;
+		}
+		target.parentElement?.querySelector("input")?.focus();
+	};
+
 	return (
-		// biome-ignore lint/a11y/useKeyWithClickEvents: We need this to be a div for the input group to work
-		// biome-ignore lint/a11y/useSemanticElements: We need this to be a div for the input group to work
-		<div
-			role="group"
+		<fieldset
 			data-slot="input-group-addon"
 			data-align={align}
 			className={cn(inputGroupAddonVariants({ align }), className)}
-			onClick={(e) => {
-				if ((e.target as HTMLElement).closest("button")) {
-					return;
+			onClick={(e) => handleFocusInput(e.currentTarget)}
+			onKeyDown={(e) => {
+				if (e.key === "Enter" || e.key === " ") {
+					e.preventDefault();
+					handleFocusInput(e.currentTarget);
 				}
-				e.currentTarget.parentElement?.querySelector("input")?.focus();
 			}}
 			{...props}
 		/>

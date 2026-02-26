@@ -9,10 +9,7 @@ import { cn } from "@/utils/cn";
 
 function Pagination({ className, ...props }: React.ComponentProps<"nav">) {
 	return (
-		// biome-ignore lint/a11y/useSemanticElements: We need this to be a nav for the pagination to work
 		<nav
-			// biome-ignore lint/a11y/noRedundantRoles: We need this to be a nav for the pagination to work
-			role="navigation"
 			aria-label="pagination"
 			data-slot="pagination"
 			className={cn("mx-auto flex w-full justify-center", className)}

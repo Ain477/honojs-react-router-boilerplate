@@ -1,5 +1,3 @@
-"use client";
-
 import useEmblaCarousel, {
 	type UseEmblaCarouselType,
 } from "embla-carousel-react";
@@ -117,7 +115,7 @@ function Carousel({
 				canScrollNext,
 			}}
 		>
-			{/** biome-ignore lint/a11y/useSemanticElements: We need this to be a div for the carousel to work */}
+			{/** biome-ignore lint/a11y/useSemanticElements: We need the role attributes */}
 			<div
 				onKeyDownCapture={handleKeyDown}
 				className={cn("relative", className)}
@@ -157,7 +155,7 @@ function CarouselItem({ className, ...props }: React.ComponentProps<"div">) {
 	const { orientation } = useCarousel();
 
 	return (
-		// biome-ignore lint/a11y/useSemanticElements: We need this to be a div for the carousel to work
+		// biome-ignore lint/a11y/useSemanticElements: We need the role attributes
 		<div
 			role="group"
 			aria-roledescription="slide"

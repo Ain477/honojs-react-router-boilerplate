@@ -34,7 +34,7 @@ function hexToArrayBuffer(hex: string): ArrayBuffer {
 	for (let i = 0; i < hex.length; i += 2) {
 		bytes[i / 2] = Number.parseInt(hex.substring(i, i + 2), 16);
 	}
-	return bytes.buffer;
+	return bytes.buffer as ArrayBuffer;
 }
 
 /**
@@ -43,7 +43,7 @@ function hexToArrayBuffer(hex: string): ArrayBuffer {
 function generateSalt(): ArrayBuffer {
 	const salt = new Uint8Array(HASH_CONFIG.SALT_LENGTH);
 	crypto.getRandomValues(salt);
-	return salt.buffer;
+	return salt.buffer as ArrayBuffer;
 }
 
 /**

@@ -119,11 +119,11 @@ export default function getAuth() {
 				defaultFindManyLimit: 100,
 				experimentalJoins: false,
 			},
-			crossSubDomainCookies: {
-				enabled: true,
-				cookiePrefix: "aihub",
-				domain: ".localhost",
-			},
+			// crossSubDomainCookies: {
+			// 	enabled: true,
+			// 	cookiePrefix: "aihub",
+			// 	domain: ".localhost",
+			// },
 			defaultCookieAttributes: {
 				sameSite: "none",
 				secure: true,

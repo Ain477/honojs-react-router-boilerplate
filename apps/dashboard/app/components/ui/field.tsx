@@ -79,11 +79,9 @@ function Field({
 	className,
 	orientation = "vertical",
 	...props
-}: React.ComponentProps<"div"> & VariantProps<typeof fieldVariants>) {
+}: React.ComponentProps<"fieldset"> & VariantProps<typeof fieldVariants>) {
 	return (
-		// biome-ignore lint/a11y/useSemanticElements: We need this to be a div for the field to work
-		<div
-			role="group"
+		<fieldset
 			data-slot="field"
 			data-orientation={orientation}
 			className={cn(fieldVariants({ orientation }), className)}
@@ -208,9 +206,8 @@ function FieldError({
 
 		return (
 			<ul className="ml-4 flex list-disc flex-col gap-1">
-				{uniqueErrors.map(
-					(error) =>
-						error?.message && <li key={Math.random()}>{error.message}</li>,
+				{uniqueErrors.map((error) =>
+					error?.message ? <li key={error.message}>{error.message}</li> : null,
 				)}
 			</ul>
 		);

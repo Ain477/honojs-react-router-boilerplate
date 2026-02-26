@@ -51,12 +51,8 @@ function BreadcrumbLink({
 
 function BreadcrumbPage({ className, ...props }: React.ComponentProps<"span">) {
 	return (
-		// biome-ignore lint/a11y/useFocusableInteractive: We need this to be a span for aria-current to work
-		// biome-ignore lint/a11y/useSemanticElements: We need this to be a span for aria-current to work
 		<span
 			data-slot="breadcrumb-page"
-			role="link"
-			aria-disabled="true"
 			aria-current="page"
 			className={cn("text-foreground font-normal", className)}
 			{...props}
