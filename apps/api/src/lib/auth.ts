@@ -34,9 +34,11 @@ export default function getAuth() {
 			enabled: true,
 		},
 		trustedOrigins: [
+			"http://api.localhost:1355",
 			"http://app.localhost:1355",
 			"https://aihub.com.bd",
-			"https://*.aihub.com.bd"
+			"https://*.aihub.com.bd",
+			"http://localhost:5173",
 		],
 		emailAndPassword: {
 			enabled: true,
@@ -116,6 +118,17 @@ export default function getAuth() {
 				generateId: () => crypto.randomUUID(),
 				defaultFindManyLimit: 100,
 				experimentalJoins: false,
+			},
+			crossSubDomainCookies: {
+				enabled: true,
+				cookiePrefix: "aihub",
+				domain: ".localhost",
+			},
+			defaultCookieAttributes: {
+				sameSite: "none",
+				secure: true,
+				// partitioned: true, // New browser standards will mandate this for foreign cookies
+				// domain: ".localhost",
 			},
 		},
 	});
