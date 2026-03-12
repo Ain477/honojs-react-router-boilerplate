@@ -1,3 +1,6 @@
+import { auth } from "@api/lib/auth";
+import { betterAuthMiddleware } from "@api/middleware/auth";
+import router from "@api/modules";
 import { Hono } from "hono";
 import { bodyLimit } from "hono/body-limit";
 import { contextStorage } from "hono/context-storage";
@@ -5,9 +8,6 @@ import { cors } from "hono/cors";
 import { HTTPException } from "hono/http-exception";
 import { requestId } from "hono/request-id";
 import { secureHeaders } from "hono/secure-headers";
-import router from "@/routes";
-import { auth } from "./lib/auth";
-import { betterAuthMiddleware } from "./middleware/auth";
 
 const app = new Hono()
 	.use(contextStorage())

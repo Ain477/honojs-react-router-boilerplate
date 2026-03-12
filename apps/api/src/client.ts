@@ -1,5 +1,5 @@
+import type { RoutersType } from "@modules";
 import { hc } from "hono/client";
-import type { RoutersType } from "@/routes";
 
 const clientInstance = hc<RoutersType>("");
 
