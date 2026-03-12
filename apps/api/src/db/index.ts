@@ -1,7 +1,7 @@
+import { env } from "@api/config/env";
 import { dbSchema, tableValidationSchema } from "@repo/db-schema";
 import { drizzle } from "drizzle-orm/postgres-js";
 import postgres from "postgres";
-import { env } from "@/config/env";
 
 /**
  * Get database instance.

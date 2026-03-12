@@ -1,9 +1,11 @@
+import { env } from "@api/config/env";
+import getDB, { dbSchema } from "@api/db";
 import { passkey } from "@better-auth/passkey";
 import { betterAuth } from "better-auth";
 import { drizzleAdapter } from "better-auth/adapters/drizzle";
 import {
 	admin,
-	apiKey,
+	// apiKey,
 	emailOTP,
 	// haveIBeenPwned,
 	jwt,
@@ -16,8 +18,6 @@ import {
 	username,
 } from "better-auth/plugins";
 import { oneTimeToken } from "better-auth/plugins/one-time-token";
-import { env } from "@/config/env";
-import getDB, { dbSchema } from "@/db";
 
 export default function getAuth() {
 	const auth = betterAuth({
@@ -63,7 +63,7 @@ export default function getAuth() {
 				defaultBanExpiresIn: 60 * 60 * 24 * 30,
 				bannedUserMessage: "Your account has been banned for 30 days.",
 			}),
-			apiKey(),
+			// apiKey(),
 			jwt(),
 			oneTimeToken(),
 			passkey(),

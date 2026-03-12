@@ -6,7 +6,9 @@
 		"jsxImportSource": "hono/jsx",
 		"baseUrl": ".",
 		"paths": {
-			"@/*": ["./src/*"]
+			"@api/*": ["./src/*"],
+			"@modules/*": ["./src/modules/*"],
+			"@modules": ["./src/modules"]
 		}
 	},
 	"include": ["src/**/*", "scripts/**/*", "drizzle.config.ts", "app.d.ts"]

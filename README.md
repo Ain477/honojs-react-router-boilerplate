@@ -110,19 +110,19 @@ Local development relies on environment variables for both the API and Dashboard
 
 ## 🐳 Docker Services Overview
 
-For development, we rely on Docker to spin up essential backend dependencies. Our `docker-compose.yml` (located in `apps/api`) configures:
+For development, we provide an optional Docker setup at the root of the project to spin up essential backend dependencies. Our `docker-compose.yml` (located at the root) configures:
 
-- **PostgreSQL**: Primary relational database.
+- **PostgreSQL**: Primary relational database (with `pgvector`, `pg_trgm`, `uuid-ossp` extensions).
 - **PgBouncer**: Connection pooler for PostgreSQL.
 - **Redis**: High-performance in-memory cache and message broker.
-- **Weaviate**: Vector database layer for advanced AI integrations or embeddings.
+- **Minio**: S3-compatible local object storage.
 
-To spin up your local services, use:
+To spin up your local services run from the project root:
 ```bash
-pnpm --filter @repo/api docker:up
+pnpm docker:up
 ```
 
-*Note: Ensure you run `docker:down` when stopping development if needed to save resources.*
+*Note: Ensure you run `pnpm docker:down` when stopping development to save resources. Developers can alternatively ignore this setup and connect to any external PostgreSQL, Redis, or S3 bucket by configuring their environment variables.*
 
 ---
 

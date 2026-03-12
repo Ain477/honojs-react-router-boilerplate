@@ -1,5 +1,5 @@
-import { createRouter } from "@/utils/router";
-import i18nRouter from "./i18n";
+import { createRouter } from "@api/utils/router";
+import i18nRouter from "./i18n/routes";
 
 const router = createRouter()
 	.get("/", (c) => {

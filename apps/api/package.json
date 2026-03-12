@@ -1,16 +1,13 @@
 {
 	"name": "@repo/api",
 	"scripts": {
-		"dev": "docker compose up -d && portless api bun run --hot src/index.ts",
+		"dev": "portless api bun run --hot src/index.ts",
 		"dev:client": "bun build src/client.ts --outdir dist --watch",
 		"build": "bun build src/index.ts --outdir dist --target bun",
 		"lint": "biome check .",
 		"lint:fix": "biome check --write .",
 		"format": "biome format --write .",
 		"check-types": "tsc --noEmit",
-		"docker:up": "docker compose up -d",
-		"docker:down": "docker compose down",
-		"docker:logs": "docker compose logs -f",
 		"db:generate": "drizzle-kit generate",
 		"db:migrate": "drizzle-kit migrate",
 		"db:push": "drizzle-kit push",
