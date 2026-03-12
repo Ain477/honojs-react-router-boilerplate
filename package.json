@@ -1,7 +1,7 @@
 {
   "name": "boilarplate",
   "private": true,
-  "packageManager": "pnpm@9.15.4",
+  "packageManager": "pnpm@10.32.1",
   "scripts": {
     "build": "turbo run build",
     "dev": "turbo run dev",
@@ -11,9 +11,9 @@
     "check-types": "turbo run check-types"
   },
   "devDependencies": {
-    "@biomejs/biome": "2.4.4",
-    "portless": "^0.4.2",
-    "turbo": "^2.8.11",
+    "@biomejs/biome": "2.4.6",
+    "portless": "^0.6.0",
+    "turbo": "^2.8.16",
     "typescript": "^5.9.3"
   }
 }
