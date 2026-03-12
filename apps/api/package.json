@@ -11,12 +11,12 @@
 		"db:generate": "drizzle-kit generate",
 		"db:migrate": "drizzle-kit migrate",
 		"db:push": "drizzle-kit push",
-		"db:studio": "drizzle-kit studio",
-		"syncEnv": "bun run scripts/env.ts"
+		"db:studio": "drizzle-kit studio"
 	},
 	"main": "./src/client.ts",
 	"types": "./src/client.ts",
 	"dependencies": {
+		"@better-auth/api-key": "^1.5.5",
 		"@better-auth/passkey": "^1.5.5",
 		"@hono/zod-validator": "^0.7.6",
 		"@repo/db-schema": "workspace:*",

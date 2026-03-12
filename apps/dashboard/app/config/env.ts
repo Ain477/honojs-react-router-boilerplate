@@ -14,29 +14,30 @@ export const env = createEnv({
 	 * Specify what environment variables are available on the server.
 	 */
 	server: {
-		DATABASE_URL: z.string().url(),
-		DIRECT_DATABASE_URL: z.string().url(),
-		REDIS_URL: z.string().url(),
-		BETTER_AUTH_SECRET: z.string().min(1),
-		BETTER_AUTH_URL: z.string().url(),
+
 	},
 
+	/**
+	 * Specify what environment variables are available on the client.
+	 */
+	clientPrefix: "VITE_",
+	client: {
+		VITE_APP_NAME: z.string().min(1),
+		VITE_API_URL: z.string().url(),
+	},
 
 	/**
 	 * Destructure all variables to make sure they aren't client-only.
 	 */
 	runtimeEnv: {
-		DATABASE_URL: process.env.DATABASE_URL,
-		DIRECT_DATABASE_URL: process.env.DIRECT_DATABASE_URL,
-		REDIS_URL: process.env.REDIS_URL,
-		BETTER_AUTH_SECRET: process.env.BETTER_AUTH_SECRET,
-		BETTER_AUTH_URL: process.env.BETTER_AUTH_URL,
+		VITE_APP_NAME: import.meta.env.VITE_APP_NAME,
+		VITE_API_URL: import.meta.env.VITE_API_URL,
 	},
 
 	/**
 	 * Run `build` or `dev` with `SKIP_ENV_VALIDATION` to skip env validation.
 	 * This is especially useful for Docker builds.
 	 */
-	skipValidation: !!process.env.SKIP_ENV_VALIDATION,
+	skipValidation: !!import.meta.env.SKIP_ENV_VALIDATION,
 	emptyStringAsUndefined: true,
 });

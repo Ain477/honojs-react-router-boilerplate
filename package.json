@@ -1,22 +1,26 @@
 {
   "name": "boilarplate",
   "private": true,
+  "type": "module",
   "packageManager": "pnpm@10.32.1",
   "scripts": {
     "build": "turbo run build",
     "dev": "turbo run dev",
+    "dev:docker": "docker compose up -d && turbo run dev",
     "lint": "turbo run lint",
     "lint:fix": "turbo run lint:fix",
     "format": "turbo run format",
     "check-types": "turbo run check-types",
     "api": "pnpm --filter @repo/api",
-		"web": "pnpm --filter @repo/web",
+		"app": "pnpm --filter @repo/dashboard",
 		"db": "pnpm --filter @repo/db-schema",
     "docker:up": "docker compose up -d",
-    "docker:down": "docker compose down"
+    "docker:down": "docker compose down",
+    "syncEnv": "node --experimental-strip-types scripts/env.ts"
   },
   "devDependencies": {
     "@biomejs/biome": "2.4.6",
+    "dotenv": "^17.3.1",
     "portless": "^0.6.0",
     "turbo": "^2.8.16",
     "typescript": "^5.9.3"
